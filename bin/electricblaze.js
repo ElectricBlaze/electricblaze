@@ -4,6 +4,7 @@
 
 const VERSION = "0.0.1";
 const HOME = "https://electricblaze.com";
+const REPO = "https://github.com/ElectricBlaze/electricblaze";
 
 const args = process.argv.slice(2);
 const json = args.includes("--json");
@@ -23,6 +24,7 @@ const payload = {
   message: "The CLI is not released yet. Commands add / preview / doctor ship in 0.1.",
   requested: cmd,
   planned,
+  repository: REPO,
   next: `Read ${HOME} for the current way to add an Instagram, TikTok or YouTube feed to a site.`,
 };
 

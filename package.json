@@ -1,6 +1,6 @@
 {
   "name": "electricblaze",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Social feeds for AI-built sites: Instagram, TikTok, YouTube with auth, cache and repair. CLI: add a feed component with demo data, preview JSON, connect an account.",
   "keywords": [
     "instagram",

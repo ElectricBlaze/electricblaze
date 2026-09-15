@@ -16,6 +16,6 @@ npx electricblaze login                # device flow
 npx electricblaze connect instagram    # prints a URL, polls, exits 2 on timeout
 ```
 
-Until then: https://electricblaze.com
+Until then: https://electricblaze.com · Source: https://github.com/ElectricBlaze/electricblaze
 
 License: MIT
