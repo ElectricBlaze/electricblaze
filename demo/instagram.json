@@ -42,11 +42,11 @@
       "url": "https://electricblaze.com/demo/instagram#post-02",
       "media": [
         {
-          "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+          "url": "https://cdn.jsdelivr.net/gh/ElectricBlaze/electricblaze@main/demo/media/reel-01.mp4",
           "mime": "video/mp4",
-          "width": 960,
-          "height": 540,
-          "durationSec": 5
+          "width": 540,
+          "height": 960,
+          "durationSec": 10
         }
       ],
       "stats": {
@@ -57,9 +57,9 @@
       "type": "video",
       "format": "reel",
       "text": "How we cup a new lot in under 60 seconds.",
-      "thumbnailUrl": "https://picsum.photos/seed/eb-ig-02/960/540",
-      "aspectRatio": 1.7778,
-      "durationSec": 5,
+      "thumbnailUrl": "https://picsum.photos/seed/eb-ig-02/540/960",
+      "aspectRatio": 0.5625,
+      "durationSec": 10,
       "publishedAt": "2026-09-10T16:05:00Z"
     },
     {
@@ -158,7 +158,7 @@
       "url": "https://electricblaze.com/demo/instagram#post-06",
       "media": [
         {
-          "url": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4",
+          "url": "https://cdn.jsdelivr.net/gh/ElectricBlaze/electricblaze@main/demo/media/video-01.mp4",
           "mime": "video/mp4",
           "width": 1280,
           "height": 720,
@@ -210,11 +210,11 @@
       "url": "https://electricblaze.com/demo/instagram#post-08",
       "media": [
         {
-          "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4",
+          "url": "https://cdn.jsdelivr.net/gh/ElectricBlaze/electricblaze@main/demo/media/reel-02.mp4",
           "mime": "video/mp4",
-          "width": 640,
-          "height": 480,
-          "durationSec": 6
+          "width": 540,
+          "height": 960,
+          "durationSec": 12
         }
       ],
       "stats": {
@@ -225,9 +225,9 @@
       "type": "video",
       "format": "reel",
       "text": "Latte art, 4 attempts, 1 keeper.",
-      "thumbnailUrl": "https://picsum.photos/seed/eb-ig-08/640/480",
-      "aspectRatio": 1.3333,
-      "durationSec": 6,
+      "thumbnailUrl": "https://picsum.photos/seed/eb-ig-08/540/960",
+      "aspectRatio": 0.5625,
+      "durationSec": 12,
       "publishedAt": "2026-08-24T17:45:00Z"
     },
     {
@@ -319,7 +319,7 @@
       "url": "https://electricblaze.com/demo/instagram#post-12",
       "media": [
         {
-          "url": "https://test-videos.co.uk/vids/sintel/mp4/h264/720/Sintel_720_10s_1MB.mp4",
+          "url": "https://cdn.jsdelivr.net/gh/ElectricBlaze/electricblaze@main/demo/media/video-02.mp4",
           "mime": "video/mp4",
           "width": 1280,
           "height": 720,

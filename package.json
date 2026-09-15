@@ -35,7 +35,7 @@
   "files": [
     "bin",
     "schema",
-    "demo",
+    "demo/*.json",
     "README.md",
     "LICENSE"
   ],
@@ -54,6 +54,6 @@
       "types": "./schema/feed.d.ts",
       "import": "./schema/validate.js"
     },
-    "./demo/*": "./demo/*"
+    "./demo/*": "./demo/*.json"
   }
 }
