@@ -1,0 +1,11 @@
+node_modules/
+*.tgz
+.env
+.env.*
+npm-debug.log*
+.claude/settings.local.json
+CLAUDE.local.md
+Thumbs.db
+.DS_Store
+desktop.ini
+nul
