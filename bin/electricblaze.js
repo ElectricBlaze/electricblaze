@@ -2,7 +2,8 @@
 // electricblaze 0.0.1 — name reservation release.
 // Never interactive: prints, exits 0. Honors --json for agents.
 
-const VERSION = "0.0.1";
+import { readFileSync } from "node:fs";
+const VERSION = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")).version;
 const HOME = "https://electricblaze.com";
 const REPO = "https://github.com/ElectricBlaze/electricblaze";
 
