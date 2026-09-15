@@ -3,7 +3,7 @@
 Placeholder files for the synthetic demo feeds. Served through jsDelivr from
 this repository until the ElectricBlaze CDN exists:
 
-    https://cdn.jsdelivr.net/gh/ElectricBlaze/electricblaze@main/demo/media/<file>
+    https://cdn.jsdelivr.net/gh/ElectricBlaze/electricblaze@89e2819/demo/media/<file>
 
 ## Videos
 
@@ -32,3 +32,8 @@ All from Pexels, cropped to Instagram ratios (1:1, 4:5, 9:16 covers, 16:9 covers
 Pexels license: free for commercial use, no attribution required
 (https://www.pexels.com/license/). Blender films: (c) Blender Foundation,
 https://www.bigbuckbunny.org/ and https://durian.blender.org/, CC BY 3.0.
+
+Demo feeds reference media by commit hash (`@89e2819`), not by branch:
+jsDelivr caches branch lookups for hours but serves commit-pinned URLs
+immediately and forever. When media files change, update the hash in the
+demo feeds in the following commit.
