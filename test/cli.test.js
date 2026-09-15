@@ -15,7 +15,7 @@ test("--version prints the package version", () => {
 test("--help --json is machine-readable and lists every command", () => {
   const out = JSON.parse(run("--help", "--json"));
   assert.equal(out.name, "electricblaze");
-  assert.deepEqual(out.commands, ["add", "preview", "doctor", "login", "connect", "list"]);
+  assert.deepEqual(out.commands, ["add", "preview", "doctor", "skill", "login", "connect", "list"]);
   assert.ok(out.flags.includes("--json"));
 });
 

@@ -14,8 +14,20 @@ realistic demo posts so the page renders before anyone signs up for anything.
 Connecting a real account is the next step, and the only one that needs a
 human.
 
-**Status: 0.1.** `add`, `preview` and `doctor` work today, in demo mode.
-`login`, `connect` and `list` need the ElectricBlaze API and ship in 0.2.
+**Status: 0.1.** `add`, `preview`, `doctor` and `skill` work today, in demo
+mode. `login`, `connect` and `list` need the ElectricBlaze API and ship in 0.2.
+
+## Three ways in
+
+| You use            | Run                                                             |
+|--------------------|-----------------------------------------------------------------|
+| Any terminal       | `npx electricblaze add instagram-feed`                          |
+| shadcn CLI         | `npx shadcn@latest add ElectricBlaze/electricblaze/instagram-feed` |
+| Claude Code, Codex | `npx electricblaze skill` (installs the agent skill into the project) |
+
+Claude Code can also install the skill as a plugin:
+`/plugin marketplace add ElectricBlaze/electricblaze`, then
+`/plugin install electricblaze@electricblaze`.
 
 ## Commands
 
@@ -27,12 +39,14 @@ Exit codes: `0` done, `1` error, `2` needs something that is not there yet
 npx electricblaze add instagram-feed     # component + demo data into this project
 npx electricblaze preview instagram      # the feed as JSON (demo until connected)
 npx electricblaze doctor                 # check the setup, get the next command
+npx electricblaze skill                  # agent skill into .claude/skills and .agents/skills
 npx electricblaze login                  # 0.2: device flow, like gh / vercel
 npx electricblaze connect instagram      # 0.2: prints a URL for the user, polls
 ```
 
 Flags: `--json`, `--force` (replace files you edited), `--dir=<path>`,
-`--framework=next|html`, `--limit=<n>`, `--formats=reel,post`.
+`--framework=next|html`, `--agent=claude,codex`, `--limit=<n>`,
+`--formats=reel,post`.
 
 ### What `add` writes
 
@@ -69,6 +83,29 @@ electricblaze/feed.d.ts
 `add` never overwrites a file you changed; it reports it as kept and `--force`
 replaces it. If the project has `AGENTS.md` or `CLAUDE.md`, `add` appends a
 short block that tells coding agents how the feed works.
+
+## The agent skill
+
+`skills/electricblaze-feeds/` is an [Agent Skill](https://agentskills.io):
+a `SKILL.md` with the workflow (add, wire in, restyle, filter, doctor, hand the
+account connection to a human) and two references: the feed schema and the
+current platform API facts (Basic Display is gone, professional accounts only,
+60-day tokens, YouTube quotas and unflagged Shorts). It triggers on requests
+like "add an Instagram feed to the footer" and stops the agent from writing a
+fragile Graph API fetch by hand.
+
+- Claude Code: `.claude/skills/electricblaze-feeds/` (project) or the plugin above.
+- Codex: `.agents/skills/electricblaze-feeds/` (project) or `~/.agents/skills/`.
+
+`npx electricblaze skill` writes both; `--agent=claude` or `--agent=codex`
+picks one. It never overwrites a skill you edited.
+
+## The shadcn registry
+
+`registry.json` at the repository root makes this repo a shadcn registry with
+no build step or hosting. `npx shadcn@latest add ElectricBlaze/electricblaze/instagram-feed`
+installs the same Next.js files as `add`, into your configured `components/`
+and `lib/` aliases, and adds `ELECTRICBLAZE_API_KEY=` to `.env.local`.
 
 ## Feed schema
 

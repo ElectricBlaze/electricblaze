@@ -1,0 +1,12 @@
+{
+  "name": "electricblaze",
+  "displayName": "ElectricBlaze social feeds",
+  "version": "0.1.1",
+  "description": "Add Instagram, TikTok and YouTube feeds to sites with demo data first and a one-link account connection later. Teaches the agent the current platform API facts and the ElectricBlaze CLI.",
+  "author": { "name": "ElectricBlaze", "email": "contact@electricblaze.com" },
+  "homepage": "https://electricblaze.com",
+  "repository": "https://github.com/ElectricBlaze/electricblaze",
+  "license": "MIT",
+  "keywords": ["instagram", "tiktok", "youtube", "social-feed", "nextjs", "html"],
+  "skills": "./skills/"
+}

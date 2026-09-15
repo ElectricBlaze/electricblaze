@@ -3,18 +3,20 @@ import { pkg, emit, HOME } from "./io.js";
 import { add } from "./commands/add.js";
 import { preview } from "./commands/preview.js";
 import { doctor } from "./commands/doctor.js";
+import { skill } from "./commands/skill.js";
 import { stub } from "./commands/stub.js";
 
 const COMMANDS = {
   add: { run: add, help: "add <component>      copy a feed component into this project (demo data; never overwrites edits)" },
   preview: { run: preview, help: "preview [source]     print the feed as JSON (demo until an account is connected)" },
   doctor: { run: doctor, help: "doctor               check the setup; every problem comes with the next command to run" },
+  skill: { run: skill, help: "skill                install the agent skill into .claude/skills and .agents/skills" },
   login: { run: (ctx) => stub("login", ctx), help: "login                (0.2) device-flow sign in" },
   connect: { run: (ctx) => stub("connect", ctx), help: "connect <source>     (0.2) print a URL for the user to connect an account" },
   list: { run: (ctx) => stub("list", ctx), help: "list                 (0.2) connected accounts" },
 };
 
-const FLAGS = ["--json", "--yes", "--force", "--dir=<path>", "--framework=next|html", "--limit=<n>", "--formats=reel,post"];
+const FLAGS = ["--json", "--yes", "--force", "--dir=<path>", "--framework=next|html", "--agent=claude,codex", "--limit=<n>", "--formats=reel,post"];
 
 export async function main(argv) {
   const parsed = parseArgs(argv);

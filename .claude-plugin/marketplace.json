@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "electricblaze",
+  "description": "ElectricBlaze plugins for Claude Code: social feeds for AI-built sites.",
+  "owner": { "name": "ElectricBlaze", "email": "contact@electricblaze.com" },
+  "plugins": [
+    {
+      "name": "electricblaze",
+      "description": "Add Instagram, TikTok and YouTube feeds to sites: demo data first, one-link account connection later, current platform API facts included.",
+      "author": { "name": "ElectricBlaze", "email": "contact@electricblaze.com" },
+      "source": "./",
+      "category": "development",
+      "homepage": "https://electricblaze.com"
+    }
+  ]
+}

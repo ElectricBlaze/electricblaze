@@ -1,0 +1,48 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "electricblaze",
+  "homepage": "https://electricblaze.com",
+  "items": [
+    {
+      "name": "instagram-feed",
+      "type": "registry:block",
+      "title": "Instagram Feed",
+      "description": "Instagram posts, reels and carousels as a responsive grid. Async Server Component for Next.js App Router with 12 demo posts included; connect a real account later with npx electricblaze connect instagram.",
+      "author": "ElectricBlaze <contact@electricblaze.com>",
+      "categories": ["social", "feed", "instagram"],
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/templates/next/InstagramFeed.tsx",
+          "type": "registry:component",
+          "target": "@components/eb/InstagramFeed.tsx"
+        },
+        {
+          "path": "src/templates/next/InstagramFeed.module.css",
+          "type": "registry:file",
+          "target": "@components/eb/InstagramFeed.module.css"
+        },
+        {
+          "path": "src/templates/next/instagram.ts",
+          "type": "registry:lib",
+          "target": "@lib/eb/instagram.ts"
+        },
+        {
+          "path": "schema/feed.d.ts",
+          "type": "registry:lib",
+          "target": "@lib/eb/feed.d.ts"
+        },
+        {
+          "path": "demo/instagram.json",
+          "type": "registry:file",
+          "target": "@lib/eb/demo/instagram.json"
+        }
+      ],
+      "envVars": {
+        "ELECTRICBLAZE_API_KEY": ""
+      },
+      "docs": "Render <InstagramFeed limit={8} /> in any App Router page or footer. It shows 12 demo posts until ELECTRICBLAZE_API_KEY is set. Check the setup with: npx electricblaze doctor"
+    }
+  ]
+}

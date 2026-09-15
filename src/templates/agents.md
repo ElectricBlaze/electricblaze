@@ -13,3 +13,5 @@ for rendering and `format` (post | reel | short | ...) for filtering.
 - All commands are non-interactive and support `--json`. To show real posts a
   human must connect the account: `npx electricblaze connect instagram` prints
   a URL for them.
+- `npx electricblaze skill` installs the full skill (workflow, schema, platform
+  facts) into `.claude/skills/` and `.agents/skills/` for Claude Code and Codex.
