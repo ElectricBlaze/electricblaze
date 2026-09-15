@@ -12,13 +12,17 @@ test("--version prints the package version", () => {
   assert.equal(run("--version").trim(), version);
 });
 
-test("--json output is machine-readable and never interactive", () => {
-  const out = JSON.parse(run("add", "instagram-feed", "--json"));
+test("--help --json is machine-readable and lists every command", () => {
+  const out = JSON.parse(run("--help", "--json"));
   assert.equal(out.name, "electricblaze");
-  assert.equal(out.requested, "add");
-  assert.ok(Array.isArray(out.planned) && out.planned.includes("add"));
+  assert.deepEqual(out.commands, ["add", "preview", "doctor", "login", "connect", "list"]);
+  assert.ok(out.flags.includes("--json"));
 });
 
-test("plain output points to the next step", () => {
-  assert.match(run("preview", "instagram"), /electricblaze\.com/);
+test("no command prints usage, exits 2, and points to the site", () => {
+  let code = 0, out = "";
+  try { out = run(); } catch (e) { code = e.status; out = e.stdout; }
+  assert.equal(code, 2);
+  assert.match(out, /Usage: npx electricblaze/);
+  assert.match(out, /electricblaze.com/);
 });

@@ -1,24 +1,74 @@
 # electricblaze
 
 Social feeds for sites that AI writes. Instagram, TikTok and YouTube data with
-authorization, cache and repair of breaking APIs. The UI is yours (or your
-agent's); the data layer is ours.
-
-**Status: 0.0.1 reserves the name. The CLI ships in 0.1.**
-
-Planned surface, all commands non-interactive, all support `--json`:
+authorization, cache and repair of breaking APIs. The UI is yours, or your
+agent's. The data layer is ours.
 
 ```
-npx electricblaze add instagram-feed   # component into your project, demo data, .env.example
-npx electricblaze preview instagram    # feed JSON in stdout (demo if not connected)
-npx electricblaze doctor               # keys, domain, quotas, token expiry
-npx electricblaze login                # device flow
-npx electricblaze connect instagram    # prints a URL, polls, exits 2 on timeout
+npx electricblaze add instagram-feed
 ```
 
-Until then: https://electricblaze.com · Source: https://github.com/ElectricBlaze/electricblaze
+That puts a working Instagram feed into the project in one command: a
+component for Next.js App Router or a drop-in kit for plain HTML, with twelve
+realistic demo posts so the page renders before anyone signs up for anything.
+Connecting a real account is the next step, and the only one that needs a
+human.
 
-License: MIT
+**Status: 0.1.** `add`, `preview` and `doctor` work today, in demo mode.
+`login`, `connect` and `list` need the ElectricBlaze API and ship in 0.2.
+
+## Commands
+
+All commands are non-interactive, never prompt, and accept `--json`.
+Exit codes: `0` done, `1` error, `2` needs something that is not there yet
+(the output always says what to run next).
+
+```
+npx electricblaze add instagram-feed     # component + demo data into this project
+npx electricblaze preview instagram      # the feed as JSON (demo until connected)
+npx electricblaze doctor                 # check the setup, get the next command
+npx electricblaze login                  # 0.2: device flow, like gh / vercel
+npx electricblaze connect instagram      # 0.2: prints a URL for the user, polls
+```
+
+Flags: `--json`, `--force` (replace files you edited), `--dir=<path>`,
+`--framework=next|html`, `--limit=<n>`, `--formats=reel,post`.
+
+### What `add` writes
+
+Next.js App Router (detected from `package.json` and `app/`):
+
+```
+components/eb/InstagramFeed.tsx          async Server Component, grid with badges
+components/eb/InstagramFeed.module.css   restyle freely
+lib/eb/instagram.ts                      getInstagramFeed(): demo now, API when a key is set
+lib/eb/feed.d.ts                         the feed schema (types)
+lib/eb/demo/instagram.json               12 sample posts
+.env.example                             ELECTRICBLAZE_API_KEY=
+```
+
+Render it anywhere: `<InstagramFeed limit={8} formats={["reel"]} />`.
+
+Plain HTML (the fallback for everything else):
+
+```
+electricblaze/instagram-feed.js          renders [data-eb-feed="instagram"] elements
+electricblaze/instagram-feed.css
+electricblaze/instagram.json             the feed
+electricblaze/instagram.demo.js          the same feed, loadable from file://
+electricblaze/feed.d.ts
+```
+
+```html
+<link rel="stylesheet" href="electricblaze/instagram-feed.css">
+<div data-eb-feed="instagram" data-limit="8"></div>
+<script src="electricblaze/instagram.demo.js"></script>
+<script src="electricblaze/instagram-feed.js" defer></script>
+```
+
+`add` never overwrites a file you changed; it reports it as kept and `--force`
+replaces it. If the project has `AGENTS.md` or `CLAUDE.md`, `add` appends a
+short block that tells coding agents how the feed works.
 
 ## Feed schema
 
@@ -38,10 +88,14 @@ import { validateFeed } from "electricblaze/schema";
 ## Demo feeds
 
 `demo/instagram.json` is a synthetic feed in schema v1: 12 posts covering
-images, carousels, feed videos and reels, with `demo: true`. It is what `add`
-copies into a project and what `preview` prints until an account is
-connected. Nothing in it points at a real Instagram account.
+images, carousels, feed videos and reels, with `demo: true`. Nothing in it
+points at a real Instagram account. Demo media (photos and short videos) live
+in `demo/media/` and are served through jsDelivr until the ElectricBlaze CDN
+exists; sources and licenses are in `demo/media/SOURCES.md`. The media folder
+is not part of the npm package.
 
-Demo media (photos and short videos) live in `demo/media/` and are served
-through jsDelivr until the ElectricBlaze CDN exists. Sources and licenses are
-in `demo/media/SOURCES.md`. The media folder is not part of the npm package.
+## Links
+
+Site: https://electricblaze.com · Source: https://github.com/ElectricBlaze/electricblaze
+
+License: MIT

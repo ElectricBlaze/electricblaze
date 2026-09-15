@@ -1,52 +1,10 @@
 #!/usr/bin/env node
-// electricblaze 0.0.1 — name reservation release.
-// Never interactive: prints, exits 0. Honors --json for agents.
+import { main } from "../src/cli.js";
 
-import { readFileSync } from "node:fs";
-const VERSION = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")).version;
-const HOME = "https://electricblaze.com";
-const REPO = "https://github.com/ElectricBlaze/electricblaze";
-
-const args = process.argv.slice(2);
-const json = args.includes("--json");
-const cmd = args.find((a) => !a.startsWith("-")) ?? null;
-
-const planned = ["add", "preview", "doctor", "login", "connect", "list"];
-
-if (args.includes("--version") || args.includes("-v")) {
-  process.stdout.write(json ? JSON.stringify({ version: VERSION }) + "\n" : VERSION + "\n");
-  process.exit(0);
-}
-
-const payload = {
-  name: "electricblaze",
-  version: VERSION,
-  status: "reserved",
-  message: "The CLI is not released yet. Commands add / preview / doctor ship in 0.1.",
-  requested: cmd,
-  planned,
-  repository: REPO,
-  next: `Read ${HOME} for the current way to add an Instagram, TikTok or YouTube feed to a site.`,
-};
-
-if (json) {
-  process.stdout.write(JSON.stringify(payload, null, 2) + "\n");
-  process.exit(0);
-}
-
-process.stdout.write(
-  [
-    `electricblaze ${VERSION} — name reserved, CLI not released yet.`,
-    ``,
-    cmd ? `You ran: electricblaze ${cmd}` : ``,
-    `Planned commands: ${planned.join(", ")}`,
-    `add / preview / doctor ship in 0.1.`,
-    ``,
-    `Next step: read ${HOME}`,
-    `Agents: run with --json for machine-readable output.`,
-    ``,
-  ]
-    .filter((l, i, a) => !(l === "" && a[i - 1] === ""))
-    .join("\n")
+main(process.argv.slice(2)).then(
+  (code) => process.exit(code),
+  (e) => {
+    process.stderr.write(`✗ ${e?.message ?? e}\n`);
+    process.exit(1);
+  },
 );
-process.exit(0);
