@@ -34,6 +34,8 @@
   },
   "files": [
     "bin",
+    "schema",
+    "demo",
     "README.md",
     "LICENSE"
   ],
@@ -42,5 +44,16 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "types": "./schema/feed.d.ts",
+  "exports": {
+    ".": {
+      "types": "./schema/feed.d.ts"
+    },
+    "./schema": {
+      "types": "./schema/feed.d.ts",
+      "import": "./schema/validate.js"
+    },
+    "./demo/*": "./demo/*"
   }
 }
