@@ -22,6 +22,11 @@ test("demo covers the Instagram shapes a renderer must handle", () => {
   }
 });
 
+test("demo media is self-hosted: only jsDelivr and electricblaze.com hosts", () => {
+  const hosts = new Set((JSON.stringify(demo).match(/"https?:[^"]+"/g) || []).map((u) => new URL(JSON.parse(u)).host));
+  assert.deepEqual([...hosts].sort(), ["cdn.jsdelivr.net", "electricblaze.com"]);
+});
+
 test("demo never points at a real Instagram URL", () => {
   for (const p of demo.posts) assert.doesNotMatch(p.url, /instagram\.com/);
   assert.doesNotMatch(demo.origin.url, /instagram\.com/);

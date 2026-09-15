@@ -42,7 +42,6 @@ images, carousels, feed videos and reels, with `demo: true`. It is what `add`
 copies into a project and what `preview` prints until an account is
 connected. Nothing in it points at a real Instagram account.
 
-Demo media are placeholders until the ElectricBlaze CDN exists: photos via
-picsum.photos, videos from `demo/media/` served through jsDelivr. Sources and
-licenses are listed in `demo/media/SOURCES.md`. The media folder is not part
-of the npm package.
+Demo media (photos and short videos) live in `demo/media/` and are served
+through jsDelivr until the ElectricBlaze CDN exists. Sources and licenses are
+in `demo/media/SOURCES.md`. The media folder is not part of the npm package.
