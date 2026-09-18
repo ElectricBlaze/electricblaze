@@ -11,14 +11,17 @@ export function emit(flags, data, text) {
   process.stdout.write(flags.json ? JSON.stringify(data, null, 2) + "\n" : text.replace(/\n?$/, "\n"));
 }
 
+const lf = (s) => s.replace(/\r\n/g, "\n");
+
 /**
  * Write a file unless it already exists with different content.
  * Returns "written" | "unchanged" | "skipped". Never prompts.
+ * Line endings are ignored in the comparison: a checkout with autocrlf is not an edit.
  */
 export function writeSafe(path, content, { force = false } = {}) {
   if (existsSync(path)) {
     const current = readFileSync(path, "utf8");
-    if (current === content) return "unchanged";
+    if (lf(current) === lf(content)) return "unchanged";
     if (!force) return "skipped";
   }
   mkdirSync(dirname(path), { recursive: true });
@@ -48,7 +51,7 @@ export function ensureBlock(path, marker, block) {
   const text = readFileSync(path, "utf8");
   const re = new RegExp(`${start}.*?${end}`, "s");
   if (re.test(text)) {
-    if (text.match(re)[0] === wrapped) return "unchanged";
+    if (lf(text.match(re)[0]) === wrapped) return "unchanged";
     writeFileSync(path, text.replace(re, wrapped));
     return "written";
   }

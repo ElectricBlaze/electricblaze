@@ -2,12 +2,18 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "electricblaze",
   "description": "ElectricBlaze plugins for Claude Code: social feeds for AI-built sites.",
-  "owner": { "name": "ElectricBlaze", "email": "contact@electricblaze.com" },
+  "owner": {
+    "name": "ElectricBlaze",
+    "email": "contact@electricblaze.com"
+  },
   "plugins": [
     {
       "name": "electricblaze",
-      "description": "Add Instagram, TikTok and YouTube feeds to sites: demo data first, one-link account connection later, current platform API facts included.",
-      "author": { "name": "ElectricBlaze", "email": "contact@electricblaze.com" },
+      "description": "Add an Instagram feed to a site: demo data first, real posts through the ElectricBlaze widget today, one-link JSON connection in 0.2. TikTok and YouTube planned. Current platform API facts included.",
+      "author": {
+        "name": "ElectricBlaze",
+        "email": "contact@electricblaze.com"
+      },
       "source": "./",
       "category": "development",
       "homepage": "https://electricblaze.com"

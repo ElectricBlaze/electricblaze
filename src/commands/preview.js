@@ -4,7 +4,8 @@ import { emit, loadDemo, HOME } from "../io.js";
 export const SOURCES_0_1 = ["instagram"];
 
 export function preview({ positional, flags }) {
-  const source = positional[0] ?? "instagram";
+  // `instagram-feed` (the component name used by `add`) is accepted as an alias for the source.
+  const source = (positional[0] ?? "instagram").replace(/-feed$/, "");
   if (!SOURCES_0_1.includes(source)) {
     emit(flags, { ok: false, error: `source "${source}" is not available yet`, available: SOURCES_0_1, next: "Run: npx electricblaze preview instagram" },
       `✗ Source "${source}" is not available yet. Available: ${SOURCES_0_1.join(", ")}\n→ Run: npx electricblaze preview instagram`);

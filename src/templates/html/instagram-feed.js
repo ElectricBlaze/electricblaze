@@ -29,7 +29,8 @@
     html += '<ul class="eb-feed__grid">';
     posts.forEach(function (p) {
       var m = p.media && p.media[0];
-      var badge = p.type === "video" ? (p.format === "reel" ? "Reel" : "Video") : p.type === "carousel" ? p.media.length + " photos" : "";
+      var allImages = p.media.every(function (x) { return String(x.mime).indexOf("image/") === 0; });
+      var badge = p.type === "video" ? (p.format === "reel" ? "Reel" : "Video") : p.type === "carousel" ? p.media.length + (allImages ? " photos" : " items") : "";
       html += '<li class="eb-feed__item"><a href="' + esc(p.url) + '" target="_blank" rel="noopener noreferrer" title="' + esc(p.text) + '">';
       html += '<img src="' + esc(p.thumbnailUrl) + '" alt="' + esc((m && m.alt) || p.text) + '" loading="lazy"' + (m && m.width ? ' width="' + m.width + '" height="' + m.height + '"' : "") + ">";
       if (badge) html += '<span class="eb-feed__badge">' + esc(badge) + "</span>";

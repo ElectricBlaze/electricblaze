@@ -46,7 +46,11 @@ export default async function InstagramFeed({ limit = 8, formats, header = true 
               {post.type === "video" && (
                 <span className={styles.badge}>{post.format === "reel" ? "Reel" : "Video"}</span>
               )}
-              {post.type === "carousel" && <span className={styles.badge}>{post.media.length} photos</span>}
+              {post.type === "carousel" && (
+                <span className={styles.badge}>
+                  {post.media.length} {post.media.every((m) => m.mime.startsWith("image/")) ? "photos" : "items"}
+                </span>
+              )}
             </a>
           </li>
         ))}
